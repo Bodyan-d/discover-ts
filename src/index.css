@@ -1,0 +1,9 @@
+@import './App.css';
+@import './components/DailyNews/DailyNews.css';
+@import './components/BrowseAll/BrowseAll.css';
+@import './components/Selections/Selections.css';
+@import './components/Search/Search.css';
+@import './components/AddImage/AddImage.css';
+@import './components/Welcome/Welcome.css';
+@import './components/Register/Register.css';
+@import './components/Login/Login.css';

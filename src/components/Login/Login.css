@@ -1,0 +1,35 @@
+.login-title {
+    display: block;
+    margin-bottom: 32px;
+}
+
+.log-input {
+    outline: none;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 17px 0 17px 17px;
+    border: 2px solid #000000;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.log-submit {
+    width: 100%;
+    padding: 19px;
+    background-color: black;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 6px;
+}
