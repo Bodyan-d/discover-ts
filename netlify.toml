@@ -1,0 +1,5 @@
+[Settings]
+  ID = "e0a1f3db-737a-4dfd-81d6-674d55c7b8d9"
+
+[build]
+    publish = "build"
