@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 const PrivateOutlet = () => {
 	const isAuthenticated = useSelector(authSelectors.getIsAuthenticated);
-	return isAuthenticated ? <Outlet /> : <Navigate to='/login' />;
+	return isAuthenticated ? <Outlet /> : <Navigate to='/welcome' />;
 };
 
 export default PrivateOutlet;
