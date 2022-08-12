@@ -6,7 +6,7 @@ function Profile() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		// dispatch(authOperations.getCurrentUser());
+		dispatch(authOperations.getCurrentUser());
 	}, []);
 
 	return <h1 className='app-title'>Profile</h1>;
