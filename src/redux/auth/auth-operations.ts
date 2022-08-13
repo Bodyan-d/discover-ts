@@ -3,6 +3,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 // import cookie from '../../services/cookies.js';
 import Cookies from 'js-cookie';
 // const myVar = process;
+import React from 'react';
+import env from 'react-dotenv';
+console.log(env.BACK_END);
 
 const token = {
 	set(token: string) {
@@ -17,12 +20,8 @@ export const register: any = createAsyncThunk(
 	'auth/register',
 	async credentials => {
 		try {
-			// const res = await axios.post(
-			// 	`http://localhost:3001/user/registration`,
-			// 	credentials
-			// );
 			const res = await axios.post(
-				`https://discoverback.herokuapp.com/user/registration`,
+				`${env.BACK_END}/user/registration`,
 				credentials
 			);
 
@@ -42,23 +41,13 @@ export const register: any = createAsyncThunk(
 
 export const logIn: any = createAsyncThunk('auth/login', async credentials => {
 	try {
-		// const res = await axios.post(
-		// 	`http://localhost:3001/user/login`,
-		// 	credentials
-		// );
-		const res = await axios.post(
-			`https://discoverback.herokuapp.com/user/login`,
-			credentials
-		);
+		const res = await axios.post(`${env.BACK_END}/user/login`, credentials);
 
 		token.set(res.data.data.token);
 		Cookies.set('token', res.data.data.token, {
 			path: '/',
 			expires: 365,
 		});
-		// cookie.save('token', res.data.data.token, {
-		// 	expires: 365,
-		// });
 
 		return res.data;
 	} catch (err: any) {
@@ -78,8 +67,8 @@ export const logOut: any = createAsyncThunk(
 	'auth/logout',
 	async (_, { rejectWithValue }) => {
 		try {
-			// await axios.get(`http://localhost:3001/user/logout`);
-			await axios.get(`https://discoverback.herokuapp.com/user/logout`);
+			await axios.get(`${env.BACK_END}/user/logout`);
+
 			token.unset();
 			Cookies.remove('token', { path: '/' });
 		} catch (err: any) {
@@ -89,19 +78,17 @@ export const logOut: any = createAsyncThunk(
 );
 
 export const getCurrentUser: any = createAsyncThunk(
-	'auth/current',
+	'auth/getCurrentUser',
 	async (_, thunkAPI: any) => {
 		const Token: any = Cookies.get('token');
 
 		token.set(Token);
 
 		try {
-			// const { data: response } = await axios.get(
-			// 	`http://localhost:3001/user/profile`
-			// );
 			const { data: response } = await axios.get(
-				`https://discoverback.herokuapp.com/user/profile`
+				`${env.BACK_END}/user/profile`
 			);
+
 			return response.data;
 		} catch (err: any) {
 			if (err.response.status === 409) {
