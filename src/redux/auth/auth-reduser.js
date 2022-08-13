@@ -40,9 +40,12 @@ const error = createReducer(null, {
 
 const isAuthenticated = createReducer(false, {
 	[register.fulfilled]: () => false,
+	[register.rejected]: () => false,
 	[logIn.fulfilled]: () => true,
+	[logIn.rejected]: () => false,
 	[logOut.fulfilled]: () => false,
 	[getCurrentUser.fulfilled]: () => true,
+	[getCurrentUser.rejected]: () => false,
 });
 
 export default combineReducers({
