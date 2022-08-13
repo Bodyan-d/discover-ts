@@ -14,7 +14,7 @@ import Login from './components/Login/Login';
 import PrivateOutlet from './components/PrivateRoute/PrivateRoute';
 import PublicOutlet from './components/PublicRoute/PublicRoute';
 import PageNotFound from './components/PageNotFound/PageNotFound';
-import { authOperations } from './redux/auth';
+// import { authOperations } from './redux/auth';
 
 function App() {
 	const dispatch = useDispatch<any>();
