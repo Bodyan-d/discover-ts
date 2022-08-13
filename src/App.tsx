@@ -13,16 +13,13 @@ import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 import PrivateOutlet from './components/PrivateRoute/PrivateRoute';
 import PublicOutlet from './components/PublicRoute/PublicRoute';
+import PageNotFound from './components/PageNotFound/PageNotFound';
 import { authOperations } from './redux/auth';
-import { useSelector } from 'react-redux';
 
 function App() {
-	const state = useSelector<any>(state => state?.auth?.user);
-	console.log(state);
-
 	const dispatch = useDispatch<any>();
 	useEffect(() => {
-		dispatch(authOperations.getCurrentUser());
+		// dispatch(authOperations.getCurrentUser());
 	}, [dispatch]);
 	return (
 		<div className='App'>
@@ -38,11 +35,16 @@ function App() {
 						<Route path='profile' element={<Profile />} />
 					</Route>
 				</Route>
-				<Route path='/' element={<PublicOutlet restricted />}>
-					<Route path='*' element={<Welcome />} />
-					<Route path='register' element={<Register />} />
-					<Route path='login' element={<Login />} />
+				<Route path='welcome' element={<PublicOutlet restricted />}>
+					<Route index element={<Welcome />} />
 				</Route>
+				<Route path='login' element={<PublicOutlet restricted />}>
+					<Route index element={<Login />} />
+				</Route>
+				<Route path='register' element={<PublicOutlet restricted />}>
+					<Route index element={<Register />} />
+				</Route>
+				<Route path='*' element={<PageNotFound />} />
 			</Routes>
 		</div>
 	);

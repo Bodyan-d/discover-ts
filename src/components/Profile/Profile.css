@@ -1,0 +1,40 @@
+.profile {
+    position: relative;
+}
+
+.profile-header {
+    text-align: center;
+}
+
+.profile-menu {
+    position: absolute;
+    right: 0;
+    top: -22px;
+    padding: 5px;
+    background: none;
+    outline: none;
+    border: none;
+}
+
+.menu-icon {
+    display: inline-block;
+    width: 20px;
+}
+
+.profile-avatar {
+    display: inline-block;
+    width: 128px;
+    height: 128px;
+    margin-bottom: 32px;
+}
+
+.profile-name {
+    font-family: 'Comfortaa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 40px;
+    text-align: center;
+    letter-spacing: -0.015em;
+    color: #000000;
+}

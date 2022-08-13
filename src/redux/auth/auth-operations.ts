@@ -69,7 +69,7 @@ export const logOut: any = createAsyncThunk(
 	'auth/logout',
 	async (_, { rejectWithValue }) => {
 		try {
-			await axios.post(`http://localhost:3001/user/logout`);
+			await axios.get(`http://localhost:3001/user/logout`);
 			token.unset();
 			Cookies.remove('token', { path: '/' });
 		} catch (err: any) {
@@ -82,8 +82,6 @@ export const getCurrentUser: any = createAsyncThunk(
 	'auth/current',
 	async (_, thunkAPI: any) => {
 		const Token: any = Cookies.get('token');
-		console.log(Token);
-
 		token.set(Token);
 
 		try {
