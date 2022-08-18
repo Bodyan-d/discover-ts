@@ -42,6 +42,7 @@ export const register: any = createAsyncThunk(
 export const logIn: any = createAsyncThunk('auth/login', async credentials => {
 	try {
 		const res = await axios.post(`${env.BACK_END}/user/login`, credentials);
+		console.log(res.data.data);
 
 		token.set(res.data.data.token);
 		Cookies.set('token', res.data.data.token, {

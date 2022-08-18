@@ -11,9 +11,9 @@ const initialUserState = {
 
 const user = createReducer(initialUserState, {
 	[register.fulfilled]: (_, { payload }) => payload.data,
-	[logIn.fulfilled]: (_, { payload }) => payload.data,
+	// [logIn.fulfilled]: (_, { payload }) => payload.data,
 	[logOut.fulfilled]: () => initialUserState,
-	[getCurrentUser.fulfilled]: (_, { payload }) => console.log(payload),
+	[getCurrentUser.fulfilled]: (_, { payload }) => payload,
 });
 
 const setError = (_, { payload }) => payload;

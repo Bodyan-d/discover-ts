@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route, Outlet } from 'react-router-dom';
 // import { AppDispatch } from './redux/store';
@@ -14,27 +14,40 @@ import Login from './components/Login/Login';
 import PrivateOutlet from './components/PrivateRoute/PrivateRoute';
 import PublicOutlet from './components/PublicRoute/PublicRoute';
 import PageNotFound from './components/PageNotFound/PageNotFound';
-// import { authOperations } from './redux/auth';
+import LoaderComp from './components/Loader/Loader';
+import { authOperations } from './redux/auth';
 
 function App() {
 	const dispatch = useDispatch<any>();
+	const [loading, setLoading] = useState(true);
+
 	useEffect(() => {
-		// dispatch(authOperations.getCurrentUser());
+		dispatch(authOperations.getCurrentUser());
 	}, [dispatch]);
+
+	useEffect(() => {
+		setLoading(false);
+	}, []);
 	return (
 		<div className='App'>
 			<Outlet />
 
 			<Routes>
-				<Route path='/' element={<PrivateOutlet />}>
-					<Route element={<Selections />}>
-						<Route path='/' element={<Home />} />
-						<Route path='search' element={<Search />} />
-						<Route path='addImage' element={<AddImage />} />
-						<Route path='chats' element={<Chats />} />
-						<Route path='profile' element={<Profile />} />
+				{loading ? (
+					<Route path='*' element={<LoaderComp />} />
+				) : (
+					<Route path='/' element={<PrivateOutlet />}>
+						<Route element={<Selections />}>
+							<Route path='/loader' element={<LoaderComp />} />
+							<Route path='/' element={<Home />} />
+							<Route path='search' element={<Search />} />
+							<Route path='addImage' element={<AddImage />} />
+							<Route path='chats' element={<Chats />} />
+							<Route path='profile' element={<Profile />} />
+						</Route>
 					</Route>
-				</Route>
+				)}
+
 				<Route path='welcome' element={<PublicOutlet restricted />}>
 					<Route index element={<Welcome />} />
 				</Route>

@@ -10,7 +10,7 @@ function Profile() {
 	const user: any = useSelector<any>(state => state.auth.user);
 
 	useEffect(() => {
-		dispatch(authOperations.getCurrentUser());
+		// dispatch(authOperations.getCurrentUser());
 	}, [dispatch]);
 
 	function handleKlick(evt: React.MouseEvent<HTMLButtonElement>) {
